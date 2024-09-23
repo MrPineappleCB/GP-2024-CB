@@ -1,0 +1,38 @@
+[gd_scene load_steps=3 format=3 uid="uid://by3sd0a35o7fp"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_3rgge"]
+[ext_resource type="Script" path="res://sprite_2d.gd" id="2_3a0tm"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(501.75, 213)
+scale = Vector2(15.1133, 4.6875)
+texture = ExtResource("1_3rgge")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(1, 2)
+rotation = 0.000977517
+scale = Vector2(0.345, 2.233)
+skew = 0.570723
+texture = ExtResource("1_3rgge")
+centered = false
+flip_v = true
+script = ExtResource("2_3a0tm")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-122, -59)
+scale = Vector2(1.17, 0.551)
+skew = -0.401426
+texture = ExtResource("1_3rgge")
+centered = false
+offset = Vector2(1, 0)
+script = ExtResource("2_3a0tm")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(157, 89)
+texture = ExtResource("1_3rgge")
+script = ExtResource("2_3a0tm")
