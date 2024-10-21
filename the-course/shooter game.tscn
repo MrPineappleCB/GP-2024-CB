@@ -18,7 +18,7 @@ size = Vector2(31.5, 35)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eqfl4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3d4rm"]
-radius = 76.0349
+radius = 46.7527
 
 [node name="Node2D" type="Node2D"]
 
@@ -108,17 +108,19 @@ position = Vector2(1000, 250)
 rotation = -1.5708
 shape = SubResource("WorldBoundaryShape2D_eqfl4")
 
-[node name="Enemy5" type="CharacterBody2D" parent="."]
+[node name="Enemy Facehugger" type="CharacterBody2D" parent="."]
 position = Vector2(515, 56)
 collision_layer = 2
 collision_mask = 2
 script = ExtResource("7_wp4ji")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy5"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy Facehugger"]
 position = Vector2(-0.75, 1.5)
 shape = SubResource("CircleShape2D_3d4rm")
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy5"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy Facehugger"]
+position = Vector2(-1, 1)
+scale = Vector2(0.511628, 0.440397)
 texture = ExtResource("8_d52hu")
 
 [connection signal="timeout" from="Spaceman/Timer" to="Spaceman" method="_on_timer_timeout"]

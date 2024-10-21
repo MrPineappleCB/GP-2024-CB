@@ -1,5 +1,5 @@
 extends CharacterBody2D
-var speed = 50
+var speed = 75
 @onready var Spaceman = target_pos
 var target_pos: Vector2
 var start_pos:Vector2
