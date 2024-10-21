@@ -35,12 +35,12 @@ func _physics_process(delta):
 	if c:
 		if c.get_collider().name.contains("Spaceman"):
 			c.get_collider().queue_free()
-			speed = 0
-			#var e = explosion.instantiate()
-			#get_tree().get_root().add_child(e)
-			#e.global_position = self.global_position
-			#e.emitting = true
-			#self.queue_free()
+			var e = explosion.instantiate()
+			get_tree().get_root().add_child(e)
+			e.global_position = self.global_position
+			e.emitting = true
+			self.queue_free()
+			get_tree().change_scene_to_file("res://Game Over.tscn")
 	
 	#if target_pos.y < start_pos.y:
 		#velocity.y = 50

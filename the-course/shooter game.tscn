@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cx6qdq0c477ye"]
+[gd_scene load_steps=17 format=3 uid="uid://cx6qdq0c477ye"]
 
 [ext_resource type="Script" path="res://Spaceman.gd" id="1_ohbyb"]
 [ext_resource type="Texture2D" uid="uid://dfqem0ebv08jw" path="res://assets/PNG/Sprites/Astronauts/spaceAstronauts_001.png" id="2_ugyg5"]
@@ -6,9 +6,11 @@
 [ext_resource type="Script" path="res://bullet_scene.gd" id="3_8socv"]
 [ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="3_glu3y"]
 [ext_resource type="Script" path="res://enemy.gd" id="5_l6g3b"]
+[ext_resource type="PackedScene" uid="uid://nb8daasaeu3i" path="res://explosion.tscn" id="6_0y77q"]
 [ext_resource type="Script" path="res://enemy_flee.gd" id="7_s0gen"]
 [ext_resource type="Script" path="res://new_enemy.gd" id="7_wp4ji"]
 [ext_resource type="Texture2D" uid="uid://2ypmtnuhqx7u" path="res://facehugger.png" id="8_ib82j"]
+[ext_resource type="Texture2D" uid="uid://4i5j8a5clxd3" path="res://facehugger2.png" id="11_bmxds"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a56th"]
 radius = 20.8806
@@ -20,6 +22,21 @@ size = Vector2(31.5, 35)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3d4rm"]
 radius = 27.7275
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7mstb"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_ib82j")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_bmxds")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -50,6 +67,7 @@ position = Vector2(775, 233)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("5_l6g3b")
+explosion = ExtResource("6_0y77q")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy"]
 shape = SubResource("RectangleShape2D_4rqb6")
@@ -96,7 +114,6 @@ shape = SubResource("RectangleShape2D_4rqb6")
 texture = ExtResource("3_glu3y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
-visible = false
 collision_layer = 3
 collision_mask = 3
 
@@ -128,9 +145,10 @@ script = ExtResource("7_wp4ji")
 position = Vector2(-10, -8)
 shape = SubResource("CircleShape2D_3d4rm")
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy Facehugger"]
-position = Vector2(-9.49999, -11)
-scale = Vector2(0.862069, 0.547619)
-texture = ExtResource("8_ib82j")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy Facehugger"]
+position = Vector2(-11, -11)
+scale = Vector2(0.827586, 0.595238)
+sprite_frames = SubResource("SpriteFrames_7mstb")
+autoplay = "default"
 
 [connection signal="timeout" from="Spaceman/Timer" to="Spaceman" method="_on_timer_timeout"]
