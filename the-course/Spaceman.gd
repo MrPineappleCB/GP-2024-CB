@@ -10,6 +10,12 @@ const ROT_SPEED = 360
 
 var can_fire = true
 
+func print_stuff():
+	DebugDraw2D.set_text("pos", position)
+	DebugDraw2D.set_text("rotation", rad_to_deg(rotation))
+	
+func _process(delta: float) -> void:
+	print_stuff()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
