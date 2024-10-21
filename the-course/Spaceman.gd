@@ -12,7 +12,13 @@ var can_fire = true
 
 func print_stuff():
 	DebugDraw2D.set_text("pos", position)
+	DebugDraw2D.set_text("global_position", global_position)
 	DebugDraw2D.set_text("rotation", rad_to_deg(rotation))
+	DebugDraw2D.set_text("transform.x", transform.x)
+	DebugDraw2D.set_text("transform.y", transform.y)
+	DebugDraw2D.set_text("global_transform.x", global_transform.x)
+	DebugDraw2D.set_text("global_transform.y", global_transform.y)
+	DebugDraw2D.set_text("vel", velocity)
 	
 func _process(delta: float) -> void:
 	print_stuff()

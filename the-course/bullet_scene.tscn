@@ -8,6 +8,8 @@ radius = 13.4164
 
 [node name="bullet" type="StaticBody2D"]
 position = Vector2(69, 45)
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("1_m18wf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
