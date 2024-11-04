@@ -25,6 +25,9 @@ func move_right():
 #var choose = [move_down(),move_up(), move_right(), move_left()]
 
 func _physics_process(delta):
+	var d:Vector2 = $"../Spaceman".global_position - global_position
+	d = d.normalized()
+	velocity = d * speed
 	if target_pos.y < start_pos.y:
 		velocity.y = 50
 	if target_pos.y > start_pos.y:

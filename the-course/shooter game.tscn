@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cx6qdq0c477ye"]
+[gd_scene load_steps=15 format=3 uid="uid://cx6qdq0c477ye"]
 
 [ext_resource type="Script" path="res://Spaceman.gd" id="1_ohbyb"]
 [ext_resource type="Texture2D" uid="uid://dfqem0ebv08jw" path="res://assets/PNG/Sprites/Astronauts/spaceAstronauts_001.png" id="2_ugyg5"]
@@ -7,7 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="3_glu3y"]
 [ext_resource type="Script" path="res://enemy.gd" id="5_l6g3b"]
 [ext_resource type="Script" path="res://new_enemy.gd" id="7_wp4ji"]
-[ext_resource type="Texture2D" uid="uid://b2a1y1atnx8in" path="res://assets/PNG/Sprites/Ships/spaceShips_007.png" id="8_d52hu"]
+[ext_resource type="Texture2D" uid="uid://dic02kcwh3kc6" path="res://facehugger.png" id="8_xstgl"]
+[ext_resource type="Texture2D" uid="uid://d1qf0f44t47tq" path="res://facehugger2.png" id="9_h4w6b"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_a56th"]
 radius = 20.8806
@@ -18,7 +19,32 @@ size = Vector2(31.5, 35)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eqfl4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3d4rm"]
-radius = 47.0724
+radius = 29.7122
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cgbbp"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": ExtResource("8_xstgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h4w6b")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_xstgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_h4w6b")
+}],
+"loop": true,
+"name": &"new_animation",
+"speed": 3.0
+}]
 
 [node name="Node2D" type="Node2D"]
 
@@ -115,12 +141,15 @@ collision_mask = 2
 script = ExtResource("7_wp4ji")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Enemy5"]
-position = Vector2(-0.75, 1.5)
+position = Vector2(7, 7)
 shape = SubResource("CircleShape2D_3d4rm")
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy5"]
-position = Vector2(0.999989, -1)
-scale = Vector2(0.494186, 0.480132)
-texture = ExtResource("8_d52hu")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="Enemy5"]
+position = Vector2(7.00003, 5)
+scale = Vector2(0.695369, 0.656733)
+sprite_frames = SubResource("SpriteFrames_cgbbp")
+animation = &"new_animation"
+frame = 1
+frame_progress = 0.834941
 
 [connection signal="timeout" from="Spaceman/Timer" to="Spaceman" method="_on_timer_timeout"]
