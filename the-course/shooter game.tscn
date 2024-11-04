@@ -101,16 +101,16 @@ shape = SubResource("RectangleShape2D_4rqb6")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy3"]
 texture = ExtResource("3_glu3y")
 
-[node name="Enemy4" type="CharacterBody2D" parent="."]
+[node name="Enemy Fleer" type="CharacterBody2D" parent="."]
 position = Vector2(299, 192)
 collision_layer = 2
 collision_mask = 3
 script = ExtResource("7_s0gen")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Enemy Fleer"]
 shape = SubResource("RectangleShape2D_4rqb6")
 
-[node name="Sprite2D" type="Sprite2D" parent="Enemy4"]
+[node name="Sprite2D" type="Sprite2D" parent="Enemy Fleer"]
 texture = ExtResource("3_glu3y")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
