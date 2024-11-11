@@ -21,7 +21,7 @@ size = Vector2(31.5, 35)
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_eqfl4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3d4rm"]
-radius = 27.7275
+radius = 30.0167
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7mstb"]
 resource_local_to_scene = true
@@ -89,6 +89,8 @@ shape = SubResource("RectangleShape2D_4rqb6")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy2"]
 texture = ExtResource("3_glu3y")
 
+[node name="Timer" type="Timer" parent="Enemy2"]
+
 [node name="Enemy3" type="CharacterBody2D" parent="."]
 position = Vector2(597, 368)
 collision_layer = 2
@@ -101,6 +103,8 @@ shape = SubResource("RectangleShape2D_4rqb6")
 [node name="Sprite2D" type="Sprite2D" parent="Enemy3"]
 texture = ExtResource("3_glu3y")
 
+[node name="Timer" type="Timer" parent="Enemy3"]
+
 [node name="Enemy4" type="CharacterBody2D" parent="."]
 position = Vector2(299, 192)
 collision_layer = 2
@@ -112,6 +116,8 @@ shape = SubResource("RectangleShape2D_4rqb6")
 
 [node name="Sprite2D" type="Sprite2D" parent="Enemy4"]
 texture = ExtResource("3_glu3y")
+
+[node name="Timer" type="Timer" parent="Enemy4"]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 collision_layer = 3
