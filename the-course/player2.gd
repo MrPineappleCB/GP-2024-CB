@@ -1,6 +1,6 @@
-extends CharacterBody2D
+extends RigidBody2D
 
-@export var power:float = -100
+@export var power:float = 0
 @export var rot_power:float = 360
 
 @export var bullet_scene:PackedScene
@@ -20,17 +20,13 @@ func _ready():
 	
 func _physics_process(delta):
 	
-<<<<<<< HEAD
 	var r = Input.get_axis("left", "right")
-=======
-	var r = Input.get_axis("turn_left", "turn_left")
->>>>>>> bb5f40e80b73069e85d7ffc68436e713392cb601
 	apply_torque(rot_power * r)
 	
-	f = Input.get_axis("move_backwards", "move_forwards")
+	f = Input.get_axis("back", "forward")
 	
 	var force = power * -transform.y * f
-	# DebugDraw2D.set_text("Force", force)
+	DebugDraw2D.set_text("Force", force)
 	if (force.length() > 0):
 		apply_central_force(force)
 		pass
