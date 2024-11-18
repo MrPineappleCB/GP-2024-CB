@@ -36,4 +36,6 @@ func _physics_process(delta):
 		velocity.x = -50
 	if target_pos.x > start_pos.x:
 		velocity.x = 50
+		
+	rotation += 0.001
 	move_and_slide()

@@ -30,17 +30,23 @@ func _physics_process(delta):
 	d = d.normalized()
 	velocity = d * speed
 	
+	var health = 3
+	
+	DebugDraw2D.set_text("Health", health)
+	
 	
 	var c =  move_and_collide(velocity * delta)
 	if c:
 		if c.get_collider().name.contains("Spaceman"):
+			health -= 1
 			c.get_collider().queue_free()
-			var e = explosion.instantiate()
-			get_tree().get_root().add_child(e)
-			e.global_position = self.global_position
-			e.emitting = true
-			self.queue_free()
-			get_tree().change_scene_to_file("res://Game Over.tscn")
+			if health == 0:
+				var e = explosion.instantiate()
+				get_tree().get_root().add_child(e)
+				e.global_position = self.global_position
+				e.emitting = true
+				self.queue_free()
+				get_tree().change_scene_to_file("res://Game Over.tscn")
 	
 	#if target_pos.y < start_pos.y:
 		#velocity.y = 50
