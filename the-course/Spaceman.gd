@@ -22,6 +22,7 @@ func print_stuff(delta: float):
 	DebugDraw2D.set_text("vel", velocity)
 	DebugDraw2D.set_text("time", v)
 	
+	
 func _process(delta: float) -> void:
 	print_stuff(delta)
 

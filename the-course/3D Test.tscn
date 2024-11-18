@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw6gvg88adhjc"]
+
+[ext_resource type="Script" path="res://cube move.gd" id="1_xomms"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8bj86"]
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8bj86")
+script = ExtResource("1_xomms")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.231459, 0.790082, 3.36143)
+fov = 106.759
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.69163, -0.0335004, 0.721475, -0.684925, 0.286558, 0.669897, -0.229186, -0.957477, 0.175247, 0, 4.20816, 0)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
