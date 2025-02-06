@@ -3,11 +3,15 @@ extends Node2D
 var radius:float
 var count:int
 
+func _ready() -> void:
+	radius = 0.15
+	count = 150
+
 func _draw() -> void:
 	
 	var l = float(count)
-	for i in range(l):
-		draw_line(Vector2(i*20, 0), Vector2(i*20, 500), Color.DARK_BLUE, 5)
+	#for i in range(l):
+	#	draw_line(Vector2(i*20, 0), Vector2(i*20, 500), Color.DARK_BLUE, 5)
 	
 		
 	var theta_inc = 0.1
