@@ -4,8 +4,9 @@ var radius:float
 var count:int
 
 func _ready() -> void:
-	radius = 0.1
-	count = 163
+	print(randf_range(0, 1000))
+	radius = randf_range(0,1)
+	count = randf_range(0,1000)
 
 func _draw() -> void:
 	
@@ -35,7 +36,9 @@ func _draw() -> void:
 	pass
 	
 func _process(delta: float) -> void:
-	queue_redraw()
+	if Input.is_action_just_pressed("fire"):
+		_ready()
+		queue_redraw()
 
 
 func _on_num_lines_value_changed(value: float) -> void:
