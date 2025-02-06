@@ -4,8 +4,8 @@ var radius:float
 var count:int
 
 func _ready() -> void:
-	radius = 0.15
-	count = 150
+	radius = 0.1
+	count = 163
 
 func _draw() -> void:
 	
