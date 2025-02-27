@@ -1,10 +1,11 @@
 extends CharacterBody2D
 
-@export var speed = 200
+@export var speed = 100
+
 
 var color:Color = Color.WHITE
 
-var dude 
+var dude
 
 func _ready() -> void:
 	dude = $"../dude"

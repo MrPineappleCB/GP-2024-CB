@@ -28,7 +28,7 @@ position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_gm47b")
 
 [node name="Marker2D" type="Marker2D" parent="."]
-position = Vector2(0, -38)
+position = Vector2(0.896729, -48.0957)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.2

@@ -32,6 +32,10 @@ func _process(delta):
 			# delete the ufo
 			c.get_collider().drop_loot()
 			c.get_collider().queue_free()
+		
+		elif coll.is_in_group("ufoextra"):
+			print("collided with new enemy")
+			c.get_collider().queue_free()
 			
 		elif coll.is_in_group("dude"):
 			coll.lives = coll.lives - 1

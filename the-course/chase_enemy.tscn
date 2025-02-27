@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nt20y"]
 size = Vector2(81, 78)
 
-[node name="chaseEnemy" type="CharacterBody2D"]
+[node name="chaseEnemy" type="CharacterBody2D" groups=["ufoextra"]]
 script = ExtResource("1_h2n34")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
