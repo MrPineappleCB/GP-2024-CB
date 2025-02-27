@@ -3,42 +3,33 @@ extends Node2D
 var radius:float
 var count:int
 
-func _ready() -> void:
-	print(randf_range(0, 1000))
-	radius = randf_range(0,1)
-	count = randf_range(0,1000)
-
 func _draw() -> void:
-	
 	var l = float(count)
 	#for i in range(l):
-	#	draw_line(Vector2(i*20, 0), Vector2(i*20, 500), Color.DARK_BLUE, 5)
+		#draw_line(Vector2(i * 100, 0), Vector2(i * 100, 500), Color.BEIGE, 10) 
 	
-		
-	var theta_inc = 0.1
+	
+	var theta_inc = 1
 	var px = 0
 	var py = 0
 	var r = 0
+	var a = 1
 	for i in range(l):
 		var theta = theta_inc * i
 		var x = sin(theta) * r
-		var y = cos(theta) * r
-		#draw_line(Vector2(px, py), Vector2(x,y), Color.CORNSILK, 10)
-		draw_line(Vector2(px, py), Vector2(x,y), Color.PERU, 200)
-		draw_line(Vector2(px, py), Vector2(x,y), Color.BURLYWOOD, 150)
-		draw_line(Vector2(px, py), Vector2(x,y), Color.BEIGE, 100)
-		#draw_line(Vector2(px, py), Vector2(x,y), Color.CORNSILK, 130)
-		#draw_line(Vector2(px, py), Vector2(x,y), Color.ANTIQUE_WHITE, 100)
-		#draw_circle(Vector2(x,y), 10, Color.ANTIQUE_WHITE)
+		var y = cos(theta) * r		
+		var c:Color = Color.from_hsv(.5, 1, 1, a)
+		draw_line(Vector2(px, py), Vector2(x, y), c, 10)
+		# draw_circle(Vector2(x, y), 10, Color.CORNSILK, false)
 		px = x
 		py = y
-		r = r + radius
+		a = a - 0.01
+		r = r + 10
 	pass
+	draw_circle(Vector2(0, 0), 200, Color.DARK_SLATE_BLUE)
 	
 func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("fire"):
-		_ready()
-		queue_redraw()
+	queue_redraw()
 
 
 func _on_num_lines_value_changed(value: float) -> void:
