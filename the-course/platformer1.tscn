@@ -1,0 +1,113 @@
+[gd_scene load_steps=13 format=3 uid="uid://doytu2v1d543n"]
+
+[ext_resource type="Texture2D" uid="uid://dnku55dcgmtb2" path="res://icon.svg" id="1_tuvkx"]
+[ext_resource type="Script" uid="uid://ca888cp467h47" path="res://CharacterBody2D.gd" id="2_43jer"]
+[ext_resource type="Texture2D" uid="uid://csfstyjj1bcb6" path="res://bomb.png" id="3_d2hnt"]
+[ext_resource type="Script" uid="uid://dneaxiun1ba6o" path="res://coin.gd" id="4_v350l"]
+[ext_resource type="Texture2D" uid="uid://c844yfbd26ea8" path="res://sprites/bug.png" id="5_pifm5"]
+[ext_resource type="Script" uid="uid://btmj43k4xw5l4" path="res://enemy_dude.gd" id="6_7ul8q"]
+[ext_resource type="Texture2D" uid="uid://c1qtra447ttmo" path="res://facehugger.png" id="7_aep1x"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0nau7"]
+size = Vector2(669, 54)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_v350l"]
+radius = 13.0
+height = 78.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ul8q"]
+size = Vector2(71, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_aep1x"]
+size = Vector2(58, 35)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3qptl"]
+radius = 264.121
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Platform" type="StaticBody2D" parent="."]
+position = Vector2(516, 326)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform"]
+position = Vector2(-1, 1)
+scale = Vector2(5.23438, 0.398438)
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform"]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_0nau7")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1249, 439)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+position = Vector2(-1, 1)
+scale = Vector2(5.23438, 0.398438)
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_0nau7")
+
+[node name="Platform3" type="StaticBody2D" parent="."]
+position = Vector2(1751, 375)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform3"]
+position = Vector2(-1, 1)
+scale = Vector2(5.23438, 0.398438)
+texture = ExtResource("1_tuvkx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform3"]
+position = Vector2(-1.5, 1)
+shape = SubResource("RectangleShape2D_0nau7")
+
+[node name="jumpperson" type="CharacterBody2D" parent="."]
+position = Vector2(281, 169)
+script = ExtResource("2_43jer")
+
+[node name="Camera2D" type="Camera2D" parent="jumpperson"]
+position = Vector2(-1, -8)
+
+[node name="Sprite2D" type="Sprite2D" parent="jumpperson"]
+position = Vector2(4, 5)
+scale = Vector2(1.5625, 2.15625)
+texture = ExtResource("3_d2hnt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="jumpperson"]
+position = Vector2(4, 2)
+shape = SubResource("CapsuleShape2D_v350l")
+
+[node name="coin" type="Area2D" parent="."]
+position = Vector2(1874, 344)
+script = ExtResource("4_v350l")
+
+[node name="Sprite2D" type="Sprite2D" parent="coin"]
+position = Vector2(-5, 0)
+scale = Vector2(2.4375, 0.5625)
+texture = ExtResource("5_pifm5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="coin"]
+position = Vector2(-3.5, 0)
+shape = SubResource("RectangleShape2D_7ul8q")
+
+[node name="enemyDude" type="CharacterBody2D" parent="."]
+position = Vector2(1367, 386)
+script = ExtResource("6_7ul8q")
+
+[node name="Sprite2D" type="Sprite2D" parent="enemyDude"]
+position = Vector2(0, 1)
+scale = Vector2(1, 0.642857)
+texture = ExtResource("7_aep1x")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyDude"]
+position = Vector2(4, 0.5)
+shape = SubResource("RectangleShape2D_aep1x")
+
+[node name="Area2D" type="Area2D" parent="enemyDude"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="enemyDude/Area2D"]
+shape = SubResource("CircleShape2D_3qptl")
+
+[connection signal="body_entered" from="coin" to="coin" method="_on_body_entered"]
+[connection signal="body_entered" from="enemyDude/Area2D" to="enemyDude" method="_on_area_2d_body_entered"]
