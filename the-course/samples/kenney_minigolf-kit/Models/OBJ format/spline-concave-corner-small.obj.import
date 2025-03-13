@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://c34d1wj80n3ci"
+path="res://.godot/imported/spline-concave-corner-small.obj-28a6a01518e26b35d0652d1376abdedb.mesh"
+
+[deps]
+
+files=["res://.godot/imported/spline-concave-corner-small.obj-28a6a01518e26b35d0652d1376abdedb.mesh"]
+
+source_file="res://samples/kenney_minigolf-kit/Models/OBJ format/spline-concave-corner-small.obj"
+dest_files=["res://.godot/imported/spline-concave-corner-small.obj-28a6a01518e26b35d0652d1376abdedb.mesh", "res://.godot/imported/spline-concave-corner-small.obj-28a6a01518e26b35d0652d1376abdedb.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

@@ -13,8 +13,16 @@ sky_material = SubResource("ProceduralSkyMaterial_cykxj")
 [sub_resource type="Environment" id="Environment_jkgwa"]
 background_mode = 2
 sky = SubResource("Sky_o6d5r")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 0.760784, 1)
 tonemap_mode = 2
+ssao_enabled = true
+ssao_radius = 3.38
+ssao_intensity = 4.19
 glow_enabled = true
+fog_mode = 1
+fog_density = 1.0
+volumetric_fog_density = 0.0
 
 [sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
 
@@ -38,9 +46,10 @@ environment = SubResource("Environment_jkgwa")
 transform = Transform3D(-0.0993198, -0.995056, -4.34953e-08, 0, -4.37114e-08, 1, -0.995056, 0.0993198, 4.3414e-09, 0, 0, 0)
 shadow_enabled = true
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="DirectionalLight3D"]
-transform = Transform3D(1, 0, -4.44089e-16, 0, 1, -5.68989e-15, 4.44089e-16, 1.4988e-15, 1, 7.97344, -0.795855, 0.879923)
+[node name="Cube" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.0993197, -0.995055, -4.34953e-08, 4.44089e-16, -4.37114e-08, 1, -0.995055, 0.0993197, 4.3414e-09, -3.82725e-08, 0.879923, -8.01306)
 mesh = SubResource("BoxMesh_cykxj")
+skeleton = NodePath("../DirectionalLight3D")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -53,6 +62,7 @@ shape = SubResource("WorldBoundaryShape3D_uiy6f")
 [node name="FPSFella" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05273, 0)
 script = ExtResource("1_cykxj")
+rot_speed = 180.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FPSFella"]
 shape = SubResource("CapsuleShape3D_q41vd")
