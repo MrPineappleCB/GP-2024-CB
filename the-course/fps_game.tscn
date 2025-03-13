@@ -1,0 +1,60 @@
+[gd_scene load_steps=10 format=3 uid="uid://dmk11b6v17bx0"]
+
+[ext_resource type="Script" uid="uid://b84iv0ro6xlg7" path="res://fps_fella.gd" id="1_cykxj"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cykxj"]
+sky_top_color = Color(0.527172, 0.156498, 1, 1)
+sky_horizon_color = Color(0.57275, 0.472331, 0.674207, 1)
+ground_horizon_color = Color(0.57275, 0.472331, 0.674207, 1)
+
+[sub_resource type="Sky" id="Sky_o6d5r"]
+sky_material = SubResource("ProceduralSkyMaterial_cykxj")
+
+[sub_resource type="Environment" id="Environment_jkgwa"]
+background_mode = 2
+sky = SubResource("Sky_o6d5r")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6d5r"]
+albedo_color = Color(0, 0.282353, 0, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_jkgwa"]
+material = SubResource("StandardMaterial3D_o6d5r")
+size = Vector2(100, 100)
+
+[sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uiy6f"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q41vd"]
+
+[node name="FPSGame" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_jkgwa")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.0993198, -0.995056, -4.34953e-08, 0, -4.37114e-08, 1, -0.995056, 0.0993198, 4.3414e-09, 0, 0, 0)
+shadow_enabled = true
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="DirectionalLight3D"]
+transform = Transform3D(1, 0, -4.44089e-16, 0, 1, -5.68989e-15, 4.44089e-16, 1.4988e-15, 1, 7.97344, -0.795855, 0.879923)
+mesh = SubResource("BoxMesh_cykxj")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("PlaneMesh_jkgwa")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("WorldBoundaryShape3D_uiy6f")
+
+[node name="FPSFella" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05273, 0)
+script = ExtResource("1_cykxj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="FPSFella"]
+shape = SubResource("CapsuleShape3D_q41vd")
+
+[node name="Camera3D" type="Camera3D" parent="FPSFella"]
