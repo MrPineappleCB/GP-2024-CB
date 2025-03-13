@@ -1,6 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://dmk11b6v17bx0"]
+[gd_scene load_steps=14 format=3 uid="uid://dmk11b6v17bx0"]
 
 [ext_resource type="Script" uid="uid://b84iv0ro6xlg7" path="res://fps_fella.gd" id="1_cykxj"]
+[ext_resource type="Script" uid="uid://b1ynusofusha0" path="res://fps_cube.gd" id="1_o6d5r"]
+[ext_resource type="Script" uid="uid://c42eela5o0b5" path="res://ammo_3D.gd" id="2_jkgwa"]
+[ext_resource type="PackedScene" uid="uid://dd4x4ob8phuh1" path="res://gun.tscn" id="2_uiy6f"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cykxj"]
 sky_top_color = Color(0.527172, 0.156498, 1, 1)
@@ -24,8 +27,6 @@ fog_mode = 1
 fog_density = 1.0
 volumetric_fog_density = 0.0
 
-[sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6d5r"]
 albedo_color = Color(0, 0.282353, 0, 1)
 
@@ -37,6 +38,10 @@ size = Vector2(100, 100)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q41vd"]
 
+[sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o6d5r"]
+
 [node name="FPSGame" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -46,10 +51,10 @@ environment = SubResource("Environment_jkgwa")
 transform = Transform3D(-0.0993198, -0.995056, -4.34953e-08, 0, -4.37114e-08, 1, -0.995056, 0.0993198, 4.3414e-09, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Cube" type="MeshInstance3D" parent="."]
-transform = Transform3D(-0.0993197, -0.995055, -4.34953e-08, 4.44089e-16, -4.37114e-08, 1, -0.995055, 0.0993197, 4.3414e-09, -3.82725e-08, 0.879923, -8.01306)
-mesh = SubResource("BoxMesh_cykxj")
-skeleton = NodePath("../DirectionalLight3D")
+[node name="Label" type="Label" parent="."]
+offset_right = 256.0
+offset_bottom = 75.0
+text = "AMMO: 0"
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -62,9 +67,56 @@ shape = SubResource("WorldBoundaryShape3D_uiy6f")
 [node name="FPSFella" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05273, 0)
 script = ExtResource("1_cykxj")
-rot_speed = 180.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="FPSFella"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_q41vd")
 
 [node name="Camera3D" type="Camera3D" parent="FPSFella"]
+
+[node name="gun" parent="FPSFella/Camera3D" instance=ExtResource("2_uiy6f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.247667, -0.142723, -0.278139)
+
+[node name="gun2" parent="FPSFella/Camera3D" instance=ExtResource("2_uiy6f")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.261736, -0.142723, -0.278139)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09783, -5.24363)
+script = ExtResource("2_jkgwa")
+
+[node name="Cube" type="MeshInstance3D" parent="Area3D"]
+mesh = SubResource("BoxMesh_cykxj")
+skeleton = NodePath("../../DirectionalLight3D")
+script = ExtResource("1_o6d5r")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_o6d5r")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.20909, 1.5, 0)
+use_collision = true
+size = Vector3(5, 3, 0.5)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 2.26581, 0, -2.71569)
+size = Vector3(5, 3, 0.5)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -4.95784)
+size = Vector3(5, 3, 0.5)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, -2.26581, 0, -2.24216)
+size = Vector3(5, 3, 0.5)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.18387, 0.233335, 0)
+operation = 2
+size = Vector3(0.5, 0.5, 1)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120336, -0.740882, -4.92738)
+operation = 2
+size = Vector3(2, 2, 0.956)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

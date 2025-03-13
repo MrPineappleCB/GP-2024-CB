@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dd4x4ob8phuh1"]
+
+[ext_resource type="Script" uid="uid://bomjuo3x75k8c" path="res://gun.gd" id="1_dk5gl"]
+[ext_resource type="PackedScene" uid="uid://tlsqdixrwe61" path="res://fps_bullet.tscn" id="2_kw0bs"]
+
+[node name="gun" type="CSGBox3D"]
+size = Vector3(0.1, 0.01, 0.01)
+script = ExtResource("1_dk5gl")
+bullet_scene = ExtResource("2_kw0bs")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0457632, -0.0187453, 0)
+size = Vector3(0.01, 0.04, 0.01)
+
+[node name="Marker3D" type="Marker3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.0753641, 0, 0)

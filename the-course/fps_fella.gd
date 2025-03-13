@@ -1,9 +1,11 @@
-extends Node3D
+extends CharacterBody3D
 
 @export var score = 0
 @export var speed:float = 10
-@export var rot_speed =0.5
+@export var rot_speed = 360
 var controlling = true
+
+@export var ammo = 0
 
 var relative:Vector2 = Vector2.ZERO
 
@@ -28,6 +30,9 @@ func _ready():
 func _process(delta):
 	rotate(Vector3.DOWN, deg_to_rad(relative.x * deg_to_rad(rot_speed) * delta))
 	rotate(transform.basis.x,deg_to_rad(- relative.y * deg_to_rad(rot_speed) * delta))
+	
+	$"../Label".text = "Ammo: " + str(ammo)
+	
 	relative = Vector2.ZERO
 	if can_move:
 		var v = Vector3.ZERO
@@ -38,13 +43,17 @@ func _process(delta):
 		
 		var turn = Input.get_axis("left", "right") - v.x    
 		if abs(turn) > 0:   
-			position = position + global_transform.basis.x * speed * turn * mult * delta
+			#position = position + global_transform.basis.x * speed * turn * mult * delta
+			velocity =  global_transform.basis.x * speed * turn
+			move_and_slide()
 			# global_translate(global_transform.basis.x * speed * turn * mult * delta)
 		
 		var movef = Input.get_axis("forward", "back")
-		if abs(movef) > 0:     
-			global_translate(global_transform.basis.z * speed * movef * mult * delta)
+		if abs(movef) > 0:    
+			velocity =  global_transform.basis.z * speed * movef
+			move_and_slide()
+			#global_translate(global_transform.basis.z * speed * movef * mult * delta)
 		
-		var upanddown = Input.get_axis("ui_accept", "ui_cut")
-		if abs(upanddown) > 0:     
-			global_translate(- global_transform.basis.y * speed * upanddown * mult * delta)
+
+	
+	pass # Replace with function body.
