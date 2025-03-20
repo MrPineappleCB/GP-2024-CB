@@ -12,6 +12,7 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node3D) -> void:
-	body.ammo += 1
-	self.queue_free()
+	if body == $"../FPSFella":
+		body.ammo += 1
+		self.queue_free()
 	pass # Replace with function body.
