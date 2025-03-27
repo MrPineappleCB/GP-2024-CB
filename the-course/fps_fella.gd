@@ -15,6 +15,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel"):
 		if controlling:
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			#vertical = pitch
 		else:            
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
