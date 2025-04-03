@@ -1,11 +1,14 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmk11b6v17bx0"]
+[gd_scene load_steps=20 format=3 uid="uid://dmk11b6v17bx0"]
 
 [ext_resource type="Script" uid="uid://b84iv0ro6xlg7" path="res://fps_fella.gd" id="1_cykxj"]
 [ext_resource type="Script" uid="uid://b1ynusofusha0" path="res://fps_cube.gd" id="1_o6d5r"]
 [ext_resource type="Script" uid="uid://c42eela5o0b5" path="res://ammo_3D.gd" id="2_jkgwa"]
 [ext_resource type="PackedScene" uid="uid://dd4x4ob8phuh1" path="res://gun.tscn" id="2_uiy6f"]
 [ext_resource type="PackedScene" uid="uid://prh35jb6tjtd" path="res://gdquest_sophia/sophia_skin.tscn" id="3_1r5kd"]
+[ext_resource type="Script" uid="uid://bv6gt0floieq1" path="res://gdquest_sophia/sophia_skin.gd" id="4_7s0cy"]
 [ext_resource type="PackedScene" uid="uid://482rxnrhe64v" path="res://gdquest_bee_bot/bee_bot_skin.tscn" id="5_q41vd"]
+[ext_resource type="Script" uid="uid://hx38rug2j1qf" path="res://wall.gd" id="8_hqnje"]
+[ext_resource type="PackedScene" uid="uid://usuuye3m5o1o" path="res://brick.tscn" id="9_is8ay"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_cykxj"]
 sky_top_color = Color(0.527172, 0.156498, 1, 1)
@@ -29,6 +32,8 @@ fog_mode = 1
 fog_density = 1.0
 volumetric_fog_density = 0.0
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_uiy6f"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o6d5r"]
 albedo_color = Color(0, 0.282353, 0, 1)
 
@@ -39,8 +44,6 @@ size = Vector2(100, 100)
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_uiy6f"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q41vd"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_uiy6f"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_cykxj"]
 
@@ -59,6 +62,11 @@ shadow_enabled = true
 offset_right = 256.0
 offset_bottom = 75.0
 text = "AMMO: 0"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05273, 0)
+mesh = SubResource("CapsuleMesh_uiy6f")
+skeleton = NodePath("../FPSFella")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
@@ -83,10 +91,11 @@ transform = Transform3D(-0.244296, 0, 9.99391, 0, 3, 0, -6.99574, 0, -0.348995, 
 transform = Transform3D(0.244296, 0, 9.99391, 0, 3, 0, -6.99574, 0, 0.348995, -0.726294, 0.2, -0.54)
 
 [node name="Camera3D" type="Camera3D" parent="FPSFella"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.06603, 3.53574)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0304368, 0.518033, -0.0848486)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="FPSFella"]
-mesh = SubResource("CapsuleMesh_uiy6f")
+[node name="SophiaSkin" parent="FPSFella" instance=ExtResource("3_1r5kd")]
+transform = Transform3D(-0.978093, 0, 0.208168, 0, 1, 0, -0.208168, 0, -0.978093, -0.146198, -1.04911, 0.139831)
+script = ExtResource("4_7s0cy")
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.09783, -5.24363)
@@ -99,9 +108,6 @@ script = ExtResource("1_o6d5r")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_o6d5r")
-
-[node name="SophiaSkin" parent="." instance=ExtResource("3_1r5kd")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.67082, 0.00361949, 1.9748)
 
 [node name="BeebotSkin" parent="." instance=ExtResource("5_q41vd")]
 transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 5.37013, 0.934281, 1.07156)
@@ -132,5 +138,10 @@ size = Vector3(0.5, 0.5, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.120336, -0.740882, -4.92738)
 operation = 2
 size = Vector3(2, 2, 0.956)
+
+[node name="wall" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.9083, 3.08957, -5.56198)
+script = ExtResource("8_hqnje")
+brick_scene = ExtResource("9_is8ay")
 
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
