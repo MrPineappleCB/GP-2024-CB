@@ -1,6 +1,6 @@
 [gd_scene load_steps=34 format=3 uid="uid://482rxnrhe64v"]
 
-[ext_resource type="PackedScene" uid="uid://d0gfx2lihdq44" path="res://addons/models/gdquest_bee_bot/bee_bot.glb" id="1_ehj7o"]
+[ext_resource type="PackedScene" uid="uid://d0gfx2lihdq44" path="res://gdquest_bee_bot/bee_bot.glb" id="1_ehj7o"]
 [ext_resource type="Material" uid="uid://bww7by8cvcuoe" path="res://gdquest_bee_bot/materials/bee_bot_lights_mat.tres" id="3_7rf2o"]
 [ext_resource type="Material" uid="uid://dx8xfrepk0a68" path="res://gdquest_bee_bot/materials/bee_bot_eyes_mat.tres" id="4_76kpj"]
 [ext_resource type="Material" uid="uid://cruyb7vmbaabx" path="res://gdquest_bee_bot/materials/bee_bot_wings_mat.tres" id="5_uomwq"]

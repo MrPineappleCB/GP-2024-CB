@@ -12,6 +12,7 @@
 script = ExtResource("1_c5ar1")
 
 [node name="dude" parent="." instance=ExtResource("2_gm47b")]
+visible = false
 rotation = 5.68262
 collision_mask = 5
 color = Color(0, 1, 0.25, 0.847059)
